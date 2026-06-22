@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dépannage Informatique & Mobile</title>
-    <link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)">
-    <link rel="preconnect" href="[fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
-    <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap)" rel="stylesheet">
-    <script src="[cdn.jsdelivr.net](https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js)"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"> rel="stylesheet">
 
     <style>
         :root {
@@ -39,12 +38,14 @@
             font-family: 'Inter', sans-serif;
             background-color: var(--beige-light);
             color: var(--text);
-            line-height: 1.6;
+            line-height: 1.6;		
+            overflow-x: hidden;
         }
 
         nav {
+	    height: 140px;
             background: var(--white);
-            padding: 1rem 2rem;
+            padding: 0.1rem 2rem;
             width: 100%;
             position: fixed;
             top: 0;
@@ -54,8 +55,16 @@
 
         section {
             scroll-margin-top: 80px;
-            padding: 5rem 2rem;
         }
+	.hero,
+	.services-section,
+	.packs-section,
+	.deplacement-section,
+	.offre-section,
+	.contact-section,
+	.legal-section {
+	    padding: 5rem 2rem;
+	}
 
         .nav-container {
             max-width: 1200px;
@@ -71,7 +80,16 @@
             font-weight: 700;
             color: var(--brown-dark);
             text-decoration: none;
+	    display: flex;
+	    align-items: center;
+	    gap: 0px;
         }
+
+	.logo-img {
+    	    width: 150px;
+	    height: 150px;
+	    object-fit: contain;
+	}
 
         .logo span {
             color: var(--green);
@@ -128,6 +146,7 @@
 
         .hero {
             min-height: 100vh;
+	    padding-top: 120px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -185,12 +204,6 @@
             font-weight: 600;
             font-size: 0.95rem;
             margin-bottom: 2rem;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
         }
 
         .cta-buttons {
@@ -201,6 +214,7 @@
         }
 
         .btn {
+            display: inline-block;
             padding: 1rem 2rem;
             border-radius: 50px;
             font-weight: 600;
@@ -305,38 +319,129 @@
         }
 
         .price-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+    width: 100%;
+    border-collapse: collapse;
+}
 
-        .price-table tr {
-            border-bottom: 1px solid var(--beige-dark);
-        }
+.price-table tr {
+    border-bottom: 1px solid var(--beige-dark);
+}
 
-        .price-table tr:last-child {
-            border-bottom: none;
-        }
+.price-table tr:last-child {
+    border-bottom: none;
+}
 
-        .price-table td {
-            padding: 0.85rem 0;
-            vertical-align: top;
-        }
+.price-table td {
+    padding: 0.85rem 0;
+    vertical-align: middle;
+}
 
-        .price-table td:first-child {
-            color: var(--text);
-            font-size: 0.95rem;
-        }
+.price-table td:first-child {
+    color: var(--text);
+    font-size: 0.95rem;
+}
 
-        .price-table td:last-child {
-            text-align: right;
-            font-weight: 600;
-            color: var(--green-dark);
-            white-space: nowrap;
-        }
+.price-table td:last-child {
+    text-align: right;
+    font-weight: 600;
+    color: var(--green-dark);
+    white-space: nowrap;
+}
 
-        .price-free {
-            color: var(--green) !important;
-        }
+.price-free {
+    color: var(--green) !important;
+}
+
+.service-main-row {
+    cursor: pointer;
+}
+
+.service-main-row:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.service-name-cell {
+    width: 100%;
+}
+
+.service-line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.service-title {
+    font-size: 0.95rem;
+    color: var(--text);
+}
+
+.service-arrow {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--beige-dark);
+    background: var(--white);
+    color: var(--brown-dark);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+
+.service-arrow:hover {
+    background: var(--green);
+    color: var(--white);
+}
+
+.service-arrow.active {
+    transform: rotate(180deg);
+    background: var(--green);
+    color: var(--white);
+}
+
+.service-detail-row {
+    display: none;
+}
+
+.service-detail-row.open {
+    display: table-row;
+}
+
+.service-detail-cell {
+    padding: 0 0 1rem 0 !important;
+}
+
+.service-detail-box {
+    background: var(--white);
+    border: 1px solid var(--beige-dark);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-top: -0.2rem;
+    color: var(--text-light);
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.service-detail-box strong {
+    color: var(--brown-dark);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.service-detail-box ul {
+    margin: 0;
+    padding-left: 1.2rem;
+}
+
+.service-detail-box li {
+    margin-bottom: 0.35rem;
+}
+
 
         .packs-section {
             background: linear-gradient(180deg, var(--beige) 0%, var(--beige-light) 100%);
@@ -514,7 +619,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
-            align-items: center;
+            align-items: start;
         }
 
         .contact-info h3 {
@@ -583,6 +688,16 @@
         .form-group textarea {
             resize: vertical;
             min-height: 120px;
+        }
+
+        .contact-note {
+            background: var(--beige-light);
+            border-left: 4px solid var(--green);
+            padding: 1rem;
+            border-radius: 10px;
+            font-size: 0.92rem;
+            color: var(--text-light);
+            margin-bottom: 1.2rem;
         }
 
         .legal-section {
@@ -712,11 +827,9 @@
                 display: flex;
             }
 
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-content {
+            .services-grid,
+            .contact-content,
+            .legal-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -727,17 +840,16 @@
             .section-header h2 {
                 font-size: 2rem;
             }
-
-            .legal-grid {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
 <body>
     <nav>
         <div class="nav-container">
-            <a href="#top" class="logo">Tech<span>Care</span></a>
+            <a href="#top" class="logo">
+    		<img src="logo.png" alt="Logo TechCare87" class="logo-img">
+    		Tech<span>Care87</span>
+	    </a>
 
             <ul class="nav-links" id="navLinks">
                 <li><a href="#services">Services</a></li>
@@ -748,7 +860,7 @@
                 <li><a href="#legal">Mentions légales</a></li>
             </ul>
 
-            <div class="menu-toggle" id="menuToggle">
+            <div class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" role="button" tabindex="0">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -758,7 +870,7 @@
 
     <section class="hero" id="top">
         <div class="hero-content">
-            <div class="badge">🎁 Offre de lancement – Diagnostic gratuit</div>
+            <div class="badge">🎁 Offre de lancement - Diagnostic gratuit</div>
             <h1>Votre expert <span>informatique</span> de proximité</h1>
             <p>Dépannage PC, smartphones et optimisation. Un service rapide, transparent et à domicile.</p>
             <div class="cta-buttons">
@@ -783,20 +895,306 @@
                     </div>
                     <div class="service-body">
                         <table class="price-table">
-                            <tr><td>Diagnostic simple</td><td class="price-free">Gratuit</td></tr>
-                            <tr><td>Diagnostic approfondi (>30 min)</td><td>15 €</td></tr>
-                            <tr><td>Nettoyage logiciel complet</td><td>25 €</td></tr>
-                            <tr><td>Réinstallation Windows</td><td>45 €</td></tr>
-                            <tr><td>Réinstallation + sauvegarde</td><td>60 €</td></tr>
-                            <tr><td>Installation SSD (fourni)</td><td>30 €</td></tr>
-                            <tr><td>Installation RAM (fournie)</td><td>20 €</td></tr>
-                            <tr><td>Nettoyage physique PC portable</td><td>25 €</td></tr>
-                            <tr><td>Nettoyage physique PC fixe</td><td>30 €</td></tr>
-                            <tr><td>Changement pâte thermique</td><td>25 €</td></tr>
-                            <tr><td>Optimisation gaming</td><td>30 €</td></tr>
-                            <tr><td>Suppression malware/virus</td><td>30 €</td></tr>
-                            <tr><td>Sauvegarde de données</td><td>20 €</td></tr>
-                        </table>
+    <tr class="service-main-row">
+        <td class="service-name-cell">
+            <div class="service-line">
+                <span class="service-title">Diagnostic simple</span>
+                <button type="button" class="service-arrow">⌄</button>
+            </div>
+        </td>
+        <td class="price-free">Gratuit</td>
+    </tr>
+    <tr class="service-detail-row">
+        <td colspan="2" class="service-detail-cell">
+            <div class="service-detail-box">
+                <strong>Détail de la prestation :</strong>
+                <ul>
+                    <li>Analyse rapide de la panne ou du ralentissement.</li>
+                    <li>Vérification visuelle et logicielle de base.</li>
+                    <li>Premier avis sur la solution la plus adaptée.</li>
+                    <li>Conseil de réparer, optimiser ou remplacer si nécessaire.</li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+
+    <tr class="service-main-row">
+        <td class="service-name-cell">
+            <div class="service-line">
+                <span class="service-title">Diagnostic approfondi (&gt;30 min)</span>
+                <button type="button" class="service-arrow">⌄</button>
+            </div>
+        </td>
+        <td>15 €</td>
+    </tr>
+    <tr class="service-detail-row">
+        <td colspan="2" class="service-detail-cell">
+            <div class="service-detail-box">
+                <strong>Détail de la prestation :</strong>
+                <ul>
+                    <li>Tests plus complets sur le système et le matériel.</li>
+                    <li>Recherche de conflits logiciels ou de causes de lenteur.</li>
+                    <li>Contrôle du disque, de la mémoire et du comportement du PC.</li>
+                    <li>Explication claire du problème et proposition d'intervention.</li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+
+    <tr class="service-main-row">
+        <td class="service-name-cell">
+            <div class="service-line">
+                <span class="service-title">Nettoyage logiciel complet</span>
+                <button type="button" class="service-arrow">⌄</button>
+            </div>
+        </td>
+        <td>25 €</td>
+    </tr>
+    <tr class="service-detail-row">
+        <td colspan="2" class="service-detail-cell">
+            <div class="service-detail-box">
+                <strong>Détail de la prestation :</strong>
+                <ul>
+                    <li>Suppression des fichiers inutiles et temporaires.</li>
+                    <li>Désinstallation des logiciels non nécessaires.</li>
+                    <li>Nettoyage du démarrage pour accélérer l'ouverture du PC.</li>
+                    <li>Optimisation générale des performances de Windows.</li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+
+    <tr class="service-main-row">
+        <td class="service-name-cell">
+            <div class="service-line">
+                <span class="service-title">Réinstallation Windows</span>
+                <button type="button" class="service-arrow">⌄</button>
+            </div>
+        </td>
+        <td>45 €</td>
+    </tr>
+    <tr class="service-detail-row">
+        <td colspan="2" class="service-detail-cell">
+            <div class="service-detail-box">
+                <strong>Détail de la prestation :</strong>
+                <ul>
+                    <li>Réinstallation propre du système Windows.</li>
+                    <li>Réglages de base après installation.</li>
+                    <li>Installation des pilotes essentiels.</li>
+                    <li>Vérifie le bon fonctionnement du PC après remise en service.</li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+
+    <tr class="service-main-row">
+        <td class="service-name-cell">
+            <div class="service-line">
+                <span class="service-title">Réinstallation + sauvegarde</span>
+                <button type="button" class="service-arrow">⌄</button>
+            </div>
+        </td>
+        <td>60 €</td>
+    </tr>
+    <tr class="service-detail-row">
+        <td colspan="2" class="service-detail-cell">
+            <div class="service-detail-box">
+                <strong>Détail de la prestation :</strong>
+                <ul>
+                    <li>Sauvegarde des documents personnels avant intervention.</li>
+                    <li>Réinstallation complète de Windows.</li>
+                    <li>Restauration des fichiers sauvegardés.</li>
+                    <li>Remise en état avec configuration propre et plus saine.</li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+
+    <tr class="service-main-row">
+        <td class="service-name-cell">
+            <div class="service-line">
+                <span class="service-title">Installation SSD (fourni)</span>
+                <button type="button" class="service-arrow">⌄</button>
+            </div>
+        </td>
+        <td>30 €</td>
+    </tr>
+    <tr class="service-detail-row">
+        <td colspan="2" class="service-detail-cell">
+            <div class="service-detail-box">
+                <strong>Détail de la prestation :</strong>
+                <ul>
+                    <li>Installation physique du SSD dans l'ordinateur.</li>
+                    <li>Configuration et vérification de la détection du disque.</li>
+                    <li>Préparation du système pour améliorer la rapidité du PC.</li>
+                    <li>Conseils sur l'usage du nouveau stockage.</li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+
+    <tr class="service-main-row">
+        <td class="service-name-cell">
+            <div class="service-line">
+                <span class="service-title">Installation RAM (fournie)</span>
+                <button type="button" class="service-arrow">⌄</button>
+            </div>
+        </td>
+        <td>20 €</td>
+    </tr>
+    <tr class="service-detail-row">
+        <td colspan="2" class="service-detail-cell">
+            <div class="service-detail-box">
+                <strong>Détail de la prestation :</strong>
+                <ul>
+                    <li>Ajout ou remplacement de mémoire vive compatible.</li>
+                    <li>Vérification du bon fonctionnement après installation.</li>
+                    <li>Contrôle de stabilité de la machine.</li>
+                    <li>Amélioration de la fluidité générale selon la configuration.</li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+
+    <tr class="service-main-row">
+        <td class="service-name-cell">
+            <div class="service-line">
+                <span class="service-title">Nettoyage physique PC portable</span>
+                <button type="button" class="service-arrow">⌄</button>
+            </div>
+        </td>
+        <td>25 €</td>
+    </tr>
+    <tr class="service-detail-row">
+        <td colspan="2" class="service-detail-cell">
+            <div class="service-detail-box">
+                <strong>Détail de la prestation :</strong>
+                <ul>
+                    <li>Ouverture et dépoussiérage interne du PC portable.</li>
+                    <li>Nettoyage des aérations et ventilateurs.</li>
+                    <li>Réduction des risques de surchauffe.</li>
+                    <li>Amélioration possible du bruit et des performances thermiques.</li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+
+    <tr class="service-main-row">
+        <td class="service-name-cell">
+            <div class="service-line">
+                <span class="service-title">Nettoyage physique PC fixe</span>
+                <button type="button" class="service-arrow">⌄</button>
+            </div>
+        </td>
+        <td>30 €</td>
+    </tr>
+    <tr class="service-detail-row">
+        <td colspan="2" class="service-detail-cell">
+            <div class="service-detail-box">
+                <strong>Détail de la prestation :</strong>
+                <ul>
+                    <li>Dépoussiérage interne complet de l'unité centrale.</li>
+                    <li>Nettoyage des ventilateurs, filtres et composants accessibles.</li>
+                    <li>Amélioration de la circulation de l'air.</li>
+                    <li>Prévention de la surchauffe et de l'usure prématurée.</li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+
+    <tr class="service-main-row">
+        <td class="service-name-cell">
+            <div class="service-line">
+                <span class="service-title">Changement pâte thermique</span>
+                <button type="button" class="service-arrow">⌄</button>
+            </div>
+        </td>
+        <td>25 €</td>
+    </tr>
+    <tr class="service-detail-row">
+        <td colspan="2" class="service-detail-cell">
+            <div class="service-detail-box">
+                <strong>Détail de la prestation :</strong>
+                <ul>
+                    <li>Retrait de l'ancienne pâte thermique.</li>
+                    <li>Application propre d'une nouvelle pâte thermique.</li>
+                    <li>Amélioration du refroidissement du processeur.</li>
+                    <li>Réduction possible des températures et du bruit.</li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+
+    <tr class="service-main-row">
+        <td class="service-name-cell">
+            <div class="service-line">
+                <span class="service-title">Optimisation gaming</span>
+                <button type="button" class="service-arrow">⌄</button>
+            </div>
+        </td>
+        <td>30 €</td>
+    </tr>
+    <tr class="service-detail-row">
+        <td colspan="2" class="service-detail-cell">
+            <div class="service-detail-box">
+                <strong>Détail de la prestation :</strong>
+                <ul>
+                    <li>Optimisation des paramètres système liés aux performances.</li>
+                    <li>Allègement des tâches inutiles en arrière-plan.</li>
+                    <li>Réglages pour améliorer la fluidité en jeu.</li>
+                    <li>Conseils adaptés à la configuration du PC.</li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+
+    <tr class="service-main-row">
+        <td class="service-name-cell">
+            <div class="service-line">
+                <span class="service-title">Suppression malware/virus</span>
+                <button type="button" class="service-arrow">⌄</button>
+            </div>
+        </td>
+        <td>30 €</td>
+    </tr>
+    <tr class="service-detail-row">
+        <td colspan="2" class="service-detail-cell">
+            <div class="service-detail-box">
+                <strong>Détail de la prestation :</strong>
+                <ul>
+                    <li>Analyse du système pour détecter les menaces.</li>
+                    <li>Suppression des malwares, virus ou programmes indésirables .</li>
+                    <li>Nettoyage du navigateur et des éléments suspects.</li>
+                    <li>Conseils de sécurité pour éviter une nouvelle infection.</li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+
+    <tr class="service-main-row">
+        <td class="service-name-cell">
+            <div class="service-line">
+                <span class="service-title">Sauvegarde de données</span>
+                <button type="button" class="service-arrow">⌄</button>
+            </div>
+        </td>
+        <td>20 €</td>
+    </tr>
+    <tr class="service-detail-row">
+        <td colspan="2" class="service-detail-cell">
+            <div class="service-detail-box">
+                <strong>Détail de la prestation :</strong>
+                <ul>
+                    <li>Copie de vos documents importants sur support adapté.</li>
+                    <li>Organisation simple des fichiers si besoin.</li>
+                    <li>Vérification rapide de la récupération des données.</li>
+                    <li>Intervention utile avant réinstallation ou changement de matériel.</li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+</table>
+
                     </div>
                 </div>
 
@@ -807,12 +1205,117 @@
                     </div>
                     <div class="service-body">
                         <table class="price-table">
-                            <tr><td>Diagnostic</td><td class="price-free">Gratuit</td></tr>
-                            <tr><td>Réinitialisation complète</td><td>25 €</td></tr>
-                            <tr><td>Sauvegarde/transfert données</td><td>25 €</td></tr>
-                            <tr><td>Nettoyage stockage</td><td>20 €</td></tr>
-                            <tr><td>Configuration téléphone neuf</td><td>20 €</td></tr>
-                        </table>
+    <tr class="service-main-row">
+        <td class="service-name-cell">
+            <div class="service-line">
+                <span class="service-title">Diagnostic</span>
+                <button type="button" class="service-arrow">⌄</button>
+            </div>
+        </td>
+        <td class="price-free">Gratuit</td>
+    </tr>
+    <tr class="service-detail-row">
+        <td colspan="2" class="service-detail-cell">
+            <div class="service-detail-box">
+                <strong>Détail de la prestation :</strong>
+                <ul>
+                    <li>Analyse rapide du problème rencontré sur le téléphone.</li>
+                    <li>Vérification des réglages ou dysfonctionnements courants.</li>
+                    <li>Premier avis sur la solution la plus adaptée.</li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+
+    <tr class="service-main-row">
+        <td class="service-name-cell">
+            <div class="service-line">
+                <span class="service-title">Réinitialisation complète</span>
+                <button type="button" class="service-arrow">⌄</button>
+            </div>
+        </td>
+        <td>25 €</td>
+    </tr>
+    <tr class="service-detail-row">
+        <td colspan="2" class="service-detail-cell">
+            <div class="service-detail-box">
+                <strong>Détail de la prestation :</strong>
+                <ul>
+                    <li>Remise à zéro du téléphone.</li>
+                    <li>Suppression des anciens réglages et données locales si demandé.</li>
+                    <li>Préparation d'un appareil propre pour une nouvelle utilisation.</li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+
+    <tr class="service-main-row">
+        <td class="service-name-cell">
+            <div class="service-line">
+                <span class="service-title">Sauvegarde/transfert données</span>
+                <button type="button" class="service-arrow">⌄</button>
+            </div>
+        </td>
+        <td>25 €</td>
+    </tr>
+    <tr class="service-detail-row">
+        <td colspan="2" class="service-detail-cell">
+            <div class="service-detail-box">
+                <strong>Détail de la prestation :</strong>
+                <ul>
+                    <li>Sauvegarde des contacts, photos ou documents selon faisabilité.</li>
+                    <li>Transfert vers un autre téléphone si nécessaire.</li>
+                    <li>Vérification de la bonne récupération des éléments essentiels.</li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+
+    <tr class="service-main-row">
+        <td class="service-name-cell">
+            <div class="service-line">
+                <span class="service-title">Nettoyage stockage</span>
+                <button type="button" class="service-arrow">⌄</button>
+            </div>
+        </td>
+        <td>20 €</td>
+    </tr>
+    <tr class="service-detail-row">
+        <td colspan="2" class="service-detail-cell">
+            <div class="service-detail-box">
+                <strong>Détail de la prestation :</strong>
+                <ul>
+                    <li>Suppression des fichiers inutiles et éléments encombrants.</li>
+                    <li>Libération d'espace de stockage.</li>
+                    <li>Conseils pour mieux gérer la mémoire du téléphone.</li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+
+    <tr class="service-main-row">
+        <td class="service-name-cell">
+            <div class="service-line">
+                <span class="service-title">Configuration téléphone neuf</span>
+                <button type="button" class="service-arrow">⌄</button>
+            </div>
+        </td>
+        <td>20 €</td>
+    </tr>
+    <tr class="service-detail-row">
+        <td colspan="2" class="service-detail-cell">
+            <div class="service-detail-box">
+                <strong>Détail de la prestation :</strong>
+                <ul>
+                    <li>Configuration des réglages principaux du téléphone.</li>
+                    <li>Ajout du compte principal si besoin.</li>
+                    <li>Aide à la prise en main de l'appareil neuf.</li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+</table>
+
                     </div>
                 </div>
             </div>
@@ -907,7 +1410,7 @@
     <section class="contact-section" id="contact">
         <div class="container">
             <div class="section-header">
-                <h2>Contactez-moi</h2>
+                <h2>Contactez-nous</h2>
                 <p>Une question ? Besoin d'un devis ? Je vous réponds rapidement.</p>
             </div>
 
@@ -919,7 +1422,7 @@
                         <div class="contact-icon">📞</div>
                         <div>
                             <strong>Téléphone</strong><br>
-                            +33 7 81 38 96 50
+                            <a href="tel:+33781389650" style="color: inherit; text-decoration: none;">+33 7 81 38 96 50</a>
                         </div>
                     </div>
 
@@ -927,7 +1430,7 @@
                         <div class="contact-icon">📧</div>
                         <div>
                             <strong>Email</strong><br>
-                            techcare87pro@gmail.com
+                            <a href="mailto:techcare87pro@gmail.com" style="color: inherit; text-decoration: none;">techcare87pro@gmail.com</a>
                         </div>
                     </div>
 
@@ -946,9 +1449,18 @@
                             Lun - Sam : 9h - 19h
                         </div>
                     </div>
+
+                    <div class="cta-buttons" style="justify-content: flex-start; margin-top: 1.5rem;">
+                        <a class="btn btn-primary" href="tel:+33781389650">Appeler maintenant</a>
+                        <a class="btn btn-secondary" href="mailto:techcare87pro@gmail.com">Envoyer un email</a>
+                    </div>
                 </div>
 
-                <form class="contact-form">
+                <form class="contact-form" id="contactForm">
+                    <div class="contact-note">
+                        Remplissez ce formulaire puis cliquez sur "Préparer l'email". Votre messagerie s'ouvrira avec votre demande déjà remplie.
+                    </div>
+
                     <div class="form-group">
                         <label for="name">Nom complet</label>
                         <input type="text" id="name" name="name" required>
@@ -968,14 +1480,14 @@
                         <label for="service">Service souhaité</label>
                         <select id="service" name="service">
                             <option value="">Sélectionnez un service</option>
-                            <option value="diagnostic">Diagnostic</option>
-                            <option value="nettoyage">Nettoyage logiciel</option>
-                            <option value="reinstall">Réinstallation Windows</option>
-                            <option value="pack-pc">Pack PC Lent</option>
-                            <option value="pack-neuf">Pack Remise à neuf</option>
-                            <option value="pack-gaming">Pack Gaming</option>
-                            <option value="telephone">Service téléphone</option>
-                            <option value="autre">Autre</option>
+                            <option value="Diagnostic">Diagnostic</option>
+                            <option value="Nettoyage logiciel">Nettoyage logiciel</option>
+                            <option value="Réinstallation Windows">Réinstallation Windows</option>
+                            <option value="Pack PC Lent">Pack PC Lent</option>
+                            <option value="Pack Remise à neuf">Pack Remise à neuf</option>
+                            <option value="Pack Gaming">Pack Gaming</option>
+                            <option value="Service téléphone">Service téléphone</option>
+                            <option value="Autre">Autre</option>
                         </select>
                     </div>
 
@@ -987,12 +1499,12 @@
                     <div class="form-group">
                         <label style="display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.9rem; line-height: 1.3;">
                             <input type="checkbox" name="consent" required style="margin-top: 3px;">
-                            <span>J’accepte que mes données personnelles soient utilisées pour être recontacté dans le cadre de ma demande de dépannage (RGPD).</span>
+                            <span>J'accepte que mes données personnelles soient utilisées pour être recontacté dans le cadre de ma demande de dépannage (RGPD).</span>
                         </label>
                     </div>
 
                     <button type="submit" class="btn btn-primary" style="width: 100%;">
-                        Envoyer ma demande
+                        Préparer l'email
                     </button>
                 </form>
             </div>
@@ -1012,41 +1524,37 @@
 
                     <div class="legal-item">
                         <label>Nom et prénom</label>
-                        <div class="value placeholder">À compléter</div>
+                        <div class="value">Jouanie Gaetan</div>
                     </div>
 
                     <div class="legal-item">
                         <label>Nom commercial</label>
-                        <div class="value placeholder">À compléter (ex: GJ Tech)</div>
+                        <div class="value">TechCare87</div>
                     </div>
 
                     <div class="legal-item">
-                        <label>Statut juridique</label>
-                        <div class="value placeholder">Micro-entrepreneur / Entrepreneur individuel</div>
+                        <label>Statut juridique </label>
+                        <div class="value">Micro-entrepreneur</div>
                     </div>
 
                     <div class="legal-item">
-                        <label>Numéro SIRET</label>
-                        <div class="value placeholder">XXX XXX XXX XXXXX</div>
+                        <label>Numéro SIRET </label>
+                        <div class="value">XXX XXX XXX XXXXX</div>
                     </div>
 
                     <div class="legal-item">
-                        <label>Adresse de l'entreprise</label>
-                        <div class="value placeholder">À compléter</div>
+                        <label>Adresse de l'entreprise </label>
+                        <div class="value">6 allée des cailles, 87220, Eyjeaux</div>
                     </div>
 
                     <div class="legal-item">
-                        <label>Email de contact</label>
-                        <div class="value placeholder">contact@votresite.fr</div>
+                        <label>Email de contact </label>
+                        <div class="value">techcare87pro@gmail.com</div>
                     </div>
 
                     <div class="legal-item">
-                        <label>Téléphone</label>
-                        <div class="value placeholder">06 XX XX XX XX</div>
-                    </div>
-
-                    <div class="legal-note">
-                        ⚠️ Ces informations sont obligatoires dès l'obtention de votre numéro SIRET.
+                        <label>Téléphone </label>
+                        <div class="value">07 81 38 96 50 </div>
                     </div>
                 </div>
 
@@ -1055,25 +1563,17 @@
 
                     <div class="legal-item">
                         <label>Nom de l'hébergeur</label>
-                        <div class="value placeholder">À compléter (ex: OVHcloud, Hostinger, Vercel...)</div>
+                        <div class="value">GitHub Pages</div>
                     </div>
 
                     <div class="legal-item">
                         <label>Raison sociale</label>
-                        <div class="value placeholder">À compléter</div>
+                        <div class="value">GitHub, Inc.</div>
                     </div>
 
                     <div class="legal-item">
                         <label>Adresse de l'hébergeur</label>
-                        <div class="value placeholder">À compléter</div>
-                    </div>
-
-                    <div class="legal-note">
-                        💡 <strong>Exemples courants :</strong><br>
-                        OVHcloud – 2 rue Kellermann, 59100 Roubaix<br>
-                        Hostinger – Kaunas, Lituanie<br>
-                        Vercel Inc. – San Francisco, CA, USA<br>
-                        GitHub Pages – GitHub Inc., San Francisco, CA
+                        <div class="value">88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA</div>
                     </div>
                 </div>
 
@@ -1092,7 +1592,7 @@
 
                     <div class="legal-item">
                         <label>Durée de conservation</label>
-                        <div class="value placeholder">À définir (ex: 3 ans après le dernier contact)</div>
+                        <div class="value">3 ans aprés le dernier contact</div>
                     </div>
 
                     <div class="legal-item">
@@ -1102,7 +1602,7 @@
 
                     <div class="legal-item">
                         <label>Cookies</label>
-                        <div class="value placeholder">À préciser (aucun cookie / cookies techniques / analytics...)</div>
+                        <div class="value">Aucun cookie de suivi ajouté par ce site.</div>
                     </div>
 
                     <div class="legal-note">
@@ -1114,8 +1614,8 @@
     </section>
 
     <footer>
-        <a href="#top" class="logo">Tech<span>Care</span></a>
-        <p>© 2024 TechCare – Dépannage informatique à domicile. Tous droits réservés.</p>
+        <a href="#top" class="logo">Tech<span>Care87</span></a>
+        <p>© 2024 TechCare - Dépannage informatique à domicile. Tous droits réservés.</p>
         <div class="footer-links">
             <a href="#legal">Mentions légales</a>
             <a href="#legal">Politique de confidentialité</a>
@@ -1124,21 +1624,20 @@
     </footer>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        console.log('Script charge');
-
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
-        const contactForm = document.querySelector('.contact-form');
-
-        console.log('menuToggle:', menuToggle);
-        console.log('navLinks:', navLinks);
-        console.log('contactForm:', contactForm);
+        const contactForm = document.getElementById('contactForm');
 
         if (menuToggle && navLinks) {
             menuToggle.addEventListener('click', () => {
-                console.log('Menu clique');
                 navLinks.classList.toggle('active');
+            });
+
+            menuToggle.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    navLinks.classList.toggle('active');
+                }
             });
         }
 
@@ -1153,7 +1652,6 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
-                console.log('Lien clique:', href);
 
                 if (!href || href === '#') {
                     return;
@@ -1171,62 +1669,63 @@
             });
         });
 
-        try {
-            emailjs.init("k8yFMxpOYt1hrKnmM");
-            console.log('EmailJS initialise');
-        } catch (err) {
-            console.error('Erreur init EmailJS:', err);
-            alert('Erreur init EmailJS : ' + (err.message || JSON.stringify(err)));
-        }
-
         if (contactForm) {
             contactForm.addEventListener('submit', function (e) {
                 e.preventDefault();
-                console.log('Submit detecte');
 
-                const form = this;
-                const btn = form.querySelector('button[type="submit"]');
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const service = document.getElementById('service').value.trim();
+                const message = document.getElementById('message').value.trim();
 
-                if (!btn) {
-                    console.error('Bouton submit introuvable');
-                    alert('Bouton submit introuvable');
-                    return;
-                }
+                const subject = encodeURIComponent('Demande de devis - ' + (service || 'Dépannage informatique'));
+                const body = encodeURIComponent(
+`Bonjour,
 
-                const originalText = btn.textContent;
-                btn.disabled = true;
-                btn.textContent = 'Envoi en cours...';
+Je vous contacte pour une demande.
 
-                const data = new FormData(form);
-                for (const [key, value] of data.entries()) {
-                    console.log('Champ formulaire ->', key, ':', value);
-                }
+Nom : ${name}
+Email : ${email}
+Téléphone : ${phone || 'Non renseigné'}
+Service souhaité : ${service || 'Non précisé'}
 
-                emailjs.sendForm(
-                    'service_h564orp',
-                    'template_6j02vj7',
-                    form
-                )
-                .then(function (response) {
-                    console.log('Succes EmailJS:', response);
-                    alert('Message envoye avec succes');
-                    form.reset();
-                })
-                .catch(function (error) {
-                    console.error('Erreur EmailJS complete:', error);
-                    alert('Erreur EmailJS : ' + (error?.text || error?.message || JSON.stringify(error)));
-                })
-                .finally(function () {
-                    btn.disabled = false;
-                    btn.textContent = originalText;
-                });
+Message :
+${message}
+
+Cordialement,`
+                );
+
+                window.location.href = `mailto:techcare87pro@gmail.com?subject=${subject}&body=${body}`;
             });
-        } else {
-            console.error('Formulaire .contact-form introuvable');
-            alert('Formulaire introuvable dans la page');
+        }
+document.querySelectorAll('.service-arrow').forEach(button => {
+    button.addEventListener('click', function (e) {
+        e.stopPropagation();
+
+        const mainRow = this.closest('.service-main-row');
+        const detailRow = mainRow.nextElementSibling;
+
+        if (!detailRow || !detailRow.classList.contains('service-detail-row')) {
+            return;
+        }
+
+        const isOpen = detailRow.classList.contains('open');
+
+        detailRow.classList.toggle('open');
+        this.classList.toggle('active', !isOpen);
+    });
+});
+
+document.querySelectorAll('.service-main-row').forEach(row => {
+    row.addEventListener('click', function () {
+        const button = this.querySelector('.service-arrow');
+        if (button) {
+            button.click();
         }
     });
+});
+
     </script>
 </body>
 </html>
-
