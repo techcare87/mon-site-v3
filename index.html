@@ -307,6 +307,24 @@
         .service-icon {
             font-size: 2rem;
         }
+	.rgpd-label {
+    	display: flex;
+    	align-items: flex-start;
+    	gap: 0.5rem;
+    	flex-wrap: wrap;
+	}
+
+	.rgpd-label input {
+   	 flex-shrink: 0;
+   	 margin-top: 3px;
+	}
+
+	.rgpd-label span {
+   	 flex: 1;
+    	min-width: 0;
+    	overflow-wrap: break-word;
+    	word-break: break-word;
+	}
 
         .service-header h3 {
             color: var(--white);
@@ -321,6 +339,7 @@
         .price-table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: auto;
 }
 
 .price-table tr {
@@ -334,6 +353,8 @@
 .price-table td {
     padding: 0.85rem 0;
     vertical-align: middle;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .price-table td:first-child {
@@ -435,11 +456,12 @@
 
 .service-detail-box ul {
     margin: 0;
-    padding-left: 1.2rem;
+    padding-left: 1rem;
 }
 
 .service-detail-box li {
     margin-bottom: 0.35rem;
+    word-wrap: break-word;
 }
 
 
@@ -659,11 +681,17 @@
         }
 
         .form-group label {
-            display: block;
+            display: flex;
+	    align-items: flex-start;
             margin-bottom: 0.5rem;
             font-weight: 500;
             color: var(--text);
+	    flex-wrap: wrap;
         }
+	.form-group label span {
+    	    flex: 1;
+    	    min-width: 0;
+	}
 
         .form-group input,
         .form-group textarea,
@@ -812,6 +840,8 @@
                 padding: 1rem;
                 gap: 0;
                 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+		font-size: 0.85rem;
+		line-height: 1.4;
             }
 
             .nav-links.active {
@@ -832,6 +862,11 @@
             .legal-grid {
                 grid-template-columns: 1fr;
             }
+	   .service-detail-box {
+    		word-wrap: break-word;
+    		overflow-wrap: break-word;
+    		font-size: 0.85rem;
+	    }
 
             .hero h1 {
                 font-size: 2.2rem;
@@ -1013,18 +1048,19 @@
     <tr class="service-main-row">
         <td class="service-name-cell">
             <div class="service-line">
-                <span class="service-title">Installation SSD (fourni)</span>
+                <span class="service-title">Installation stockage </span>
                 <button type="button" class="service-arrow">⌄</button>
             </div>
         </td>
-        <td>30 €</td>
+        <td>*30 €</td>
     </tr>
     <tr class="service-detail-row">
         <td colspan="2" class="service-detail-cell">
             <div class="service-detail-box">
                 <strong>Détail de la prestation :</strong>
                 <ul>
-                    <li>Installation physique du SSD dans l'ordinateur.</li>
+		    <li>* Ce prix n'inclut pas le prix du stockage.</li>
+                    <li>Installation physique du stockage dans l'ordinateur.</li>
                     <li>Configuration et vérification de la détection du disque.</li>
                     <li>Préparation du système pour améliorer la rapidité du PC.</li>
                     <li>Conseils sur l'usage du nouveau stockage.</li>
@@ -1036,17 +1072,18 @@
     <tr class="service-main-row">
         <td class="service-name-cell">
             <div class="service-line">
-                <span class="service-title">Installation RAM (fournie)</span>
+                <span class="service-title">Installation RAM </span>
                 <button type="button" class="service-arrow">⌄</button>
             </div>
         </td>
-        <td>20 €</td>
+        <td>*20 €</td>
     </tr>
     <tr class="service-detail-row">
         <td colspan="2" class="service-detail-cell">
             <div class="service-detail-box">
                 <strong>Détail de la prestation :</strong>
                 <ul>
+		    <li>* Ce prix n'inclut pas le prix de la RAM.</li>
                     <li>Ajout ou remplacement de mémoire vive compatible.</li>
                     <li>Vérification du bon fonctionnement après installation.</li>
                     <li>Contrôle de stabilité de la machine.</li>
@@ -1193,6 +1230,79 @@
             </div>
         </td>
     </tr>
+
+    <tr class="service-main-row">
+        <td class="service-name-cell">
+            <div class="service-line">
+                <span class="service-title">Changement de composant</span>
+                <button type="button" class="service-arrow">⌄</button>
+            </div>
+        </td>
+        <td>*25 €</td>
+    </tr>
+    <tr class="service-detail-row">
+        <td colspan="2" class="service-detail-cell">
+            <div class="service-detail-box">
+                <strong>Détail de la prestation :</strong>
+                <ul>
+		    <li>* Ce prix n'inclut pas le prix du composant.</li>
+                    <li>Retrait de l'ancien composant.</li>
+                    <li>Commande d'un nouveau composant adapté au budget et à l'utilisation.</li>
+                    <li>Installation du nouveau composant.</li>
+                    <li>Test démarrage.</li>
+		    <li>Optimisation et installation des pilotes.</li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+
+<tr class="service-main-row">
+        <td class="service-name-cell">
+            <div class="service-line">
+                <span class="service-title">Montage PC simple </span>
+                <button type="button" class="service-arrow">⌄</button>
+            </div>
+        </td>
+        <td>*40 €</td>
+    </tr>
+    <tr class="service-detail-row">
+        <td colspan="2" class="service-detail-cell">
+            <div class="service-detail-box">
+                <strong>Détail de la prestation :</strong>
+                <ul>
+                    <li>* Ce prix n'inclut pas le prix des composants.</li>
+                    <li>Sélection de composants adaptés au budget et à l'utilisation .</li>
+                    <li>Montage physique des composants et des câbles .</li>
+                    <li>Test démarrage.</li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+<tr class="service-main-row">
+        <td class="service-name-cell">
+            <div class="service-line">
+                <span class="service-title">Montage PC complet</span>
+                <button type="button" class="service-arrow">⌄</button>
+            </div>
+        </td>
+        <td>*60 €</td>
+    </tr>
+    <tr class="service-detail-row">
+        <td colspan="2" class="service-detail-cell">
+            <div class="service-detail-box">
+                <strong>Détail de la prestation :</strong>
+                <ul>
+                    <li>* Ce prix n'inclut pas le prix des composants.</li>
+                    <li>Sélection de composants adaptés au budget et à l'utilisation .</li>
+                    <li>Montage physique des composants et des câbles .</li>
+                    <li>Installation de l'OS demandé ou adapté (Windows 10/11, linux, etc).</li>
+		    <li>Test de démarrage et de stabilité.</li>
+		    <li>Optimisation et installation des pilotes.</li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+
 </table>
 
                     </div>
@@ -1222,6 +1332,74 @@
                     <li>Analyse rapide du problème rencontré sur le téléphone.</li>
                     <li>Vérification des réglages ou dysfonctionnements courants.</li>
                     <li>Premier avis sur la solution la plus adaptée.</li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+
+<tr class="service-main-row">
+        <td class="service-name-cell">
+            <div class="service-line">
+                <span class="service-title">Pose d'une vitre de protection</span>
+                <button type="button" class="service-arrow">⌄</button>
+            </div>
+        </td>
+        <td>15 €</td>
+    </tr>
+    <tr class="service-detail-row">
+        <td colspan="2" class="service-detail-cell">
+            <div class="service-detail-box">
+                <strong>Détail de la prestation :</strong>
+                <ul>
+                    <li>Achat et pose d'une vitre de protection adaptée au téléphone.</li>
+                    <li>Option film de protection Hydrogel sur demande.</li>
+                    <li>Option film de protection Anti-espion sur demande.</li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+
+<tr class="service-main-row">
+        <td class="service-name-cell">
+            <div class="service-line">
+                <span class="service-title">Changement d'écran</span>
+                <button type="button" class="service-arrow">⌄</button>
+            </div>
+        </td>
+        <td>*20 €</td>
+    </tr>
+    <tr class="service-detail-row">
+        <td colspan="2" class="service-detail-cell">
+            <div class="service-detail-box">
+                <strong>Détail de la prestation :</strong>
+                <ul>
+		    <li>* Ce prix n'inclut pas le prix du nouvel écran.</li>
+                    <li>Commande d'un nouvel écran adapté à votre téléphone.</li>
+                    <li>Installation d'un écran neuf.</li>
+                    
+                </ul>
+            </div>
+        </td>
+    </tr>
+
+<tr class="service-main-row">
+        <td class="service-name-cell">
+            <div class="service-line">
+                <span class="service-title">Changement de batterie</span>
+                <button type="button" class="service-arrow">⌄</button>
+            </div>
+        </td>
+        <td>*30 €</td>
+    </tr>
+    <tr class="service-detail-row">
+        <td colspan="2" class="service-detail-cell">
+            <div class="service-detail-box">
+                <strong>Détail de la prestation :</strong>
+                <ul>
+		    <li>* Ce prix n'inclut pas le prix de la nouvelle batterie.</li>
+                    <li>Commande d'une nouvelle batterie adapté à votre téléphone.</li>
+                    <li>Installation d'une batterie neuve.</li>
+                    
                 </ul>
             </div>
         </td>
@@ -1411,7 +1589,7 @@
         <div class="container">
             <div class="section-header">
                 <h2>Contactez-nous</h2>
-                <p>Une question ? Besoin d'un devis ? Je vous réponds rapidement.</p>
+                <p>Une question ? Besoin d'un devis ? Nous vous répondons rapidement.</p>
             </div>
 
             <div class="contact-content">
@@ -1492,16 +1670,13 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="message">Décrivez votre problème</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label style="display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.9rem; line-height: 1.3;">
-                            <input type="checkbox" name="consent" required style="margin-top: 3px;">
-                            <span>J'accepte que mes données personnelles soient utilisées pour être recontacté dans le cadre de ma demande de dépannage (RGPD).</span>
-                        </label>
-                    </div>
+    <label class="rgpd-label">
+        <input type="checkbox" name="consent" required>
+        <span>
+            J'accepte que mes données personnelles soient utilisées pour être recontacté dans le cadre de ma demande de dépannage (RGPD).
+        </span>
+    </label>
+</div>
 
                     <button type="submit" class="btn btn-primary" style="width: 100%;">
                         Préparer l'email
@@ -1592,7 +1767,7 @@
 
                     <div class="legal-item">
                         <label>Durée de conservation</label>
-                        <div class="value">3 ans aprés le dernier contact</div>
+                        <div class="value">3 ans après le dernier contact</div>
                     </div>
 
                     <div class="legal-item">
