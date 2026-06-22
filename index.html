@@ -42,7 +42,6 @@
             line-height: 1.6;
         }
 
-        /* Navigation */
         nav {
             background: var(--white);
             padding: 1rem 2rem;
@@ -127,7 +126,6 @@
             transition: 0.3s;
         }
 
-        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -258,7 +256,6 @@
             margin: 0 auto;
         }
 
-        /* Services Grid */
         .services-section {
             background: var(--white);
         }
@@ -341,7 +338,6 @@
             color: var(--green) !important;
         }
 
-        /* Packs Section */
         .packs-section {
             background: linear-gradient(180deg, var(--beige) 0%, var(--beige-light) 100%);
         }
@@ -429,7 +425,6 @@
             font-weight: 400;
         }
 
-        /* Déplacement Section */
         .deplacement-section {
             background: var(--white);
         }
@@ -467,7 +462,6 @@
             color: var(--green-dark);
         }
 
-        /* Offre Section */
         .offre-section {
             background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
             color: var(--white);
@@ -512,7 +506,6 @@
             opacity: 0.9;
         }
 
-        /* Contact Section */
         .contact-section {
             background: var(--beige-light);
         }
@@ -592,7 +585,6 @@
             min-height: 120px;
         }
 
-        /* Legal Section */
         .legal-section {
             background: var(--beige);
             border-top: 1px solid var(--beige-dark);
@@ -655,7 +647,6 @@
             border-left: 3px solid var(--green);
         }
 
-        /* Footer */
         footer {
             background: var(--brown-dark);
             color: var(--beige-light);
@@ -694,7 +685,6 @@
             opacity: 1;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -745,7 +735,6 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <a href="#top" class="logo">Tech<span>Care</span></a>
@@ -759,7 +748,7 @@
                 <li><a href="#legal">Mentions légales</a></li>
             </ul>
 
-            <div class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" role="button" tabindex="0">
+            <div class="menu-toggle" id="menuToggle">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -767,7 +756,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero" id="top">
         <div class="hero-content">
             <div class="badge">🎁 Offre de lancement – Diagnostic gratuit</div>
@@ -780,7 +768,6 @@
         </div>
     </section>
 
-    <!-- Services Section -->
     <section class="services-section" id="services">
         <div class="container">
             <div class="section-header">
@@ -789,7 +776,6 @@
             </div>
 
             <div class="services-grid">
-                <!-- Informatique -->
                 <div class="service-card">
                     <div class="service-header">
                         <span class="service-icon">💻</span>
@@ -797,63 +783,23 @@
                     </div>
                     <div class="service-body">
                         <table class="price-table">
-                            <tr>
-                                <td>Diagnostic simple</td>
-                                <td class="price-free">Gratuit</td>
-                            </tr>
-                            <tr>
-                                <td>Diagnostic approfondi (>30 min)</td>
-                                <td>15 €</td>
-                            </tr>
-                            <tr>
-                                <td>Nettoyage logiciel complet</td>
-                                <td>25 €</td>
-                            </tr>
-                            <tr>
-                                <td>Réinstallation Windows</td>
-                                <td>45 €</td>
-                            </tr>
-                            <tr>
-                                <td>Réinstallation + sauvegarde</td>
-                                <td>60 €</td>
-                            </tr>
-                            <tr>
-                                <td>Installation SSD (fourni)</td>
-                                <td>30 €</td>
-                            </tr>
-                            <tr>
-                                <td>Installation RAM (fournie)</td>
-                                <td>20 €</td>
-                            </tr>
-                            <tr>
-                                <td>Nettoyage physique PC portable</td>
-                                <td>25 €</td>
-                            </tr>
-                            <tr>
-                                <td>Nettoyage physique PC fixe</td>
-                                <td>30 €</td>
-                            </tr>
-                            <tr>
-                                <td>Changement pâte thermique</td>
-                                <td>25 €</td>
-                            </tr>
-                            <tr>
-                                <td>Optimisation gaming</td>
-                                <td>30 €</td>
-                            </tr>
-                            <tr>
-                                <td>Suppression malware/virus</td>
-                                <td>30 €</td>
-                            </tr>
-                            <tr>
-                                <td>Sauvegarde de données</td>
-                                <td>20 €</td>
-                            </tr>
+                            <tr><td>Diagnostic simple</td><td class="price-free">Gratuit</td></tr>
+                            <tr><td>Diagnostic approfondi (>30 min)</td><td>15 €</td></tr>
+                            <tr><td>Nettoyage logiciel complet</td><td>25 €</td></tr>
+                            <tr><td>Réinstallation Windows</td><td>45 €</td></tr>
+                            <tr><td>Réinstallation + sauvegarde</td><td>60 €</td></tr>
+                            <tr><td>Installation SSD (fourni)</td><td>30 €</td></tr>
+                            <tr><td>Installation RAM (fournie)</td><td>20 €</td></tr>
+                            <tr><td>Nettoyage physique PC portable</td><td>25 €</td></tr>
+                            <tr><td>Nettoyage physique PC fixe</td><td>30 €</td></tr>
+                            <tr><td>Changement pâte thermique</td><td>25 €</td></tr>
+                            <tr><td>Optimisation gaming</td><td>30 €</td></tr>
+                            <tr><td>Suppression malware/virus</td><td>30 €</td></tr>
+                            <tr><td>Sauvegarde de données</td><td>20 €</td></tr>
                         </table>
                     </div>
                 </div>
 
-                <!-- Téléphones -->
                 <div class="service-card">
                     <div class="service-header brown">
                         <span class="service-icon">📱</span>
@@ -861,26 +807,11 @@
                     </div>
                     <div class="service-body">
                         <table class="price-table">
-                            <tr>
-                                <td>Diagnostic</td>
-                                <td class="price-free">Gratuit</td>
-                            </tr>
-                            <tr>
-                                <td>Réinitialisation complète</td>
-                                <td>25 €</td>
-                            </tr>
-                            <tr>
-                                <td>Sauvegarde/transfert données</td>
-                                <td>25 €</td>
-                            </tr>
-                            <tr>
-                                <td>Nettoyage stockage</td>
-                                <td>20 €</td>
-                            </tr>
-                            <tr>
-                                <td>Configuration téléphone neuf</td>
-                                <td>20 €</td>
-                            </tr>
+                            <tr><td>Diagnostic</td><td class="price-free">Gratuit</td></tr>
+                            <tr><td>Réinitialisation complète</td><td>25 €</td></tr>
+                            <tr><td>Sauvegarde/transfert données</td><td>25 €</td></tr>
+                            <tr><td>Nettoyage stockage</td><td>20 €</td></tr>
+                            <tr><td>Configuration téléphone neuf</td><td>20 €</td></tr>
                         </table>
                     </div>
                 </div>
@@ -888,7 +819,6 @@
         </div>
     </section>
 
-    <!-- Packs Section -->
     <section class="packs-section" id="packs">
         <div class="container">
             <div class="section-header">
@@ -933,7 +863,6 @@
         </div>
     </section>
 
-    <!-- Déplacement Section -->
     <section class="deplacement-section" id="deplacement">
         <div class="container">
             <div class="section-header">
@@ -958,7 +887,6 @@
         </div>
     </section>
 
-    <!-- Offre Section -->
     <section class="offre-section" id="offre">
         <div class="container">
             <h2>🎁 Offre de lancement</h2>
@@ -976,7 +904,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section class="contact-section" id="contact">
         <div class="container">
             <div class="section-header">
@@ -1060,9 +987,7 @@
                     <div class="form-group">
                         <label style="display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.9rem; line-height: 1.3;">
                             <input type="checkbox" name="consent" required style="margin-top: 3px;">
-                            <span>
-                                J’accepte que mes données personnelles soient utilisées pour être recontacté dans le cadre de ma demande de dépannage (RGPD).
-                            </span>
+                            <span>J’accepte que mes données personnelles soient utilisées pour être recontacté dans le cadre de ma demande de dépannage (RGPD).</span>
                         </label>
                     </div>
 
@@ -1074,7 +999,6 @@
         </div>
     </section>
 
-    <!-- Legal Section -->
     <section class="legal-section" id="legal">
         <div class="container">
             <div class="section-header">
@@ -1083,7 +1007,6 @@
             </div>
 
             <div class="legal-grid">
-                <!-- Mentions légales -->
                 <div class="legal-card">
                     <h3>📋 Mentions légales</h3>
 
@@ -1127,7 +1050,6 @@
                     </div>
                 </div>
 
-                <!-- Hébergeur -->
                 <div class="legal-card">
                     <h3>🌐 Hébergeur du site</h3>
 
@@ -1155,7 +1077,6 @@
                     </div>
                 </div>
 
-                <!-- Politique de confidentialité -->
                 <div class="legal-card">
                     <h3>🔒 Politique de confidentialité</h3>
 
@@ -1171,13 +1092,19 @@
 
                     <div class="legal-item">
                         <label>Durée de conservation</label>
-                        <div class="value placeholder"> 3 ans après le dernier contact)</div>
+                        <div class="value placeholder">À définir (ex: 3 ans après le dernier contact)</div>
                     </div>
 
                     <div class="legal-item">
                         <label>Droit d'accès et suppression</label>
                         <div class="value">Contactez-nous par email pour exercer vos droits RGPD</div>
                     </div>
+
+                    <div class="legal-item">
+                        <label>Cookies</label>
+                        <div class="value placeholder">À préciser (aucun cookie / cookies techniques / analytics...)</div>
+                    </div>
+
                     <div class="legal-note">
                         📧 Pour toute demande concernant vos données personnelles (accès, rectification, suppression), envoyez un email à l'adresse de contact indiquée ci-dessus.
                     </div>
@@ -1186,7 +1113,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <a href="#top" class="logo">Tech<span>Care</span></a>
         <p>© 2024 TechCare – Dépannage informatique à domicile. Tous droits réservés.</p>
@@ -1198,110 +1124,109 @@
     </footer>
 
     <script>
-document.addEventListener('DOMContentLoaded', function () {
-    console.log('Script charge');
+    document.addEventListener('DOMContentLoaded', function () {
+        console.log('Script charge');
 
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-    const contactForm = document.querySelector('.contact-form');
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const contactForm = document.querySelector('.contact-form');
 
-    console.log('menuToggle:', menuToggle);
-    console.log('navLinks:', navLinks);
-    console.log('contactForm:', contactForm);
+        console.log('menuToggle:', menuToggle);
+        console.log('navLinks:', navLinks);
+        console.log('contactForm:', contactForm);
 
-    if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
-            console.log('Menu clique');
-            navLinks.classList.toggle('active');
-        });
-    }
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => {
+                console.log('Menu clique');
+                navLinks.classList.toggle('active');
+            });
+        }
 
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (navLinks) {
-                navLinks.classList.remove('active');
-            }
-        });
-    });
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const href = this.getAttribute('href');
-            console.log('Lien clique:', href);
-
-            if (!href || href === '#') {
-                return;
-            }
-
-            const target = document.querySelector(href);
-
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-
-    try {
-        emailjs.init("k8yFMxpOYt1hrKnmM");
-        console.log('EmailJS initialise');
-    } catch (err) {
-        console.error('Erreur init EmailJS:', err);
-        alert('Erreur init EmailJS : ' + (err.message || JSON.stringify(err)));
-    }
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-            console.log('Submit detecte');
-
-            const form = this;
-            const btn = form.querySelector('button[type="submit"]');
-
-            if (!btn) {
-                console.error('Bouton submit introuvable');
-                alert('Bouton submit introuvable');
-                return;
-            }
-
-            const originalText = btn.textContent;
-            btn.disabled = true;
-            btn.textContent = 'Envoi en cours...';
-
-            const data = new FormData(form);
-            for (const [key, value] of data.entries()) {
-                console.log('Champ formulaire ->', key, ':', value);
-            }
-
-            emailjs.sendForm(
-                'service_h564orp',
-                'template_6j02vj7',
-                form
-            )
-            .then(function (response) {
-                console.log('Succes EmailJS:', response);
-                alert('Message envoye avec succes');
-                form.reset();
-            })
-            .catch(function (error) {
-                console.error('Erreur EmailJS complete:', error);
-                alert('Erreur EmailJS : ' + (error?.text || error?.message || JSON.stringify(error)));
-            })
-            .finally(function () {
-                btn.disabled = false;
-                btn.textContent = originalText;
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks) {
+                    navLinks.classList.remove('active');
+                }
             });
         });
-    } else {
-        console.error('Formulaire .contact-form introuvable');
-        alert('Formulaire introuvable dans la page');
-    }
-});
-</script>
 
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                console.log('Lien clique:', href);
+
+                if (!href || href === '#') {
+                    return;
+                }
+
+                const target = document.querySelector(href);
+
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        try {
+            emailjs.init("k8yFMxpOYt1hrKnmM");
+            console.log('EmailJS initialise');
+        } catch (err) {
+            console.error('Erreur init EmailJS:', err);
+            alert('Erreur init EmailJS : ' + (err.message || JSON.stringify(err)));
+        }
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                console.log('Submit detecte');
+
+                const form = this;
+                const btn = form.querySelector('button[type="submit"]');
+
+                if (!btn) {
+                    console.error('Bouton submit introuvable');
+                    alert('Bouton submit introuvable');
+                    return;
+                }
+
+                const originalText = btn.textContent;
+                btn.disabled = true;
+                btn.textContent = 'Envoi en cours...';
+
+                const data = new FormData(form);
+                for (const [key, value] of data.entries()) {
+                    console.log('Champ formulaire ->', key, ':', value);
+                }
+
+                emailjs.sendForm(
+                    'service_h564orp',
+                    'template_6j02vj7',
+                    form
+                )
+                .then(function (response) {
+                    console.log('Succes EmailJS:', response);
+                    alert('Message envoye avec succes');
+                    form.reset();
+                })
+                .catch(function (error) {
+                    console.error('Erreur EmailJS complete:', error);
+                    alert('Erreur EmailJS : ' + (error?.text || error?.message || JSON.stringify(error)));
+                })
+                .finally(function () {
+                    btn.disabled = false;
+                    btn.textContent = originalText;
+                });
+            });
+        } else {
+            console.error('Formulaire .contact-form introuvable');
+            alert('Formulaire introuvable dans la page');
+        }
+    });
+    </script>
 </body>
 </html>
 
