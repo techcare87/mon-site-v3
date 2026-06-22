@@ -1198,84 +1198,110 @@
     </footer>
 
     <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-        const contactForm = document.querySelector('.contact-form');
+document.addEventListener('DOMContentLoaded', function () {
+    console.log('Script charge');
 
-        if (menuToggle && navLinks) {
-            menuToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-            });
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    const contactForm = document.querySelector('.contact-form');
 
-            menuToggle.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    navLinks.classList.toggle('active');
-                }
-            });
-        }
+    console.log('menuToggle:', menuToggle);
+    console.log('navLinks:', navLinks);
+    console.log('contactForm:', contactForm);
 
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (navLinks) {
-                    navLinks.classList.remove('active');
-                }
-            });
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+            console.log('Menu clique');
+            navLinks.classList.toggle('active');
         });
+    }
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-
-                if (!href || href === '#') {
-                    return;
-                }
-
-                const target = document.querySelector(href);
-
-                if (target) {
-                    e.preventDefault();
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (navLinks) {
+                navLinks.classList.remove('active');
+            }
         });
+    });
 
-        emailjs.init("k8yFMxpOYt1hrKnmM");
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            console.log('Lien clique:', href);
 
-        if (contactForm) {
-            contactForm.addEventListener('submit', function (e) {
+            if (!href || href === '#') {
+                return;
+            }
+
+            const target = document.querySelector(href);
+
+            if (target) {
                 e.preventDefault();
-
-                const form = this;
-                const btn = form.querySelector('button[type="submit"]');
-                const originalText = btn.textContent;
-
-                btn.textContent = 'Envoi en cours...';
-                btn.disabled = true;
-
-                emailjs.sendForm(
-                    'service_h564orp',
-                    'template_6j02vj7',
-                    form
-                )
-                .then(function () {
-                    alert('✅ Message envoyé avec succès !\n\nJe vous recontacte très vite.');
-                    form.reset();
-                })
-                .catch(function (error) {
-                    console.error(error);
-                    alert("Erreur lors de l'envoi du message.");
-                })
-                .finally(function () {
-                    btn.disabled = false;
-                    btn.textContent = originalText;
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
                 });
+            }
+        });
+    });
+
+    try {
+        emailjs.init("k8yFMxpOYt1hrKnmM");
+        console.log('EmailJS initialise');
+    } catch (err) {
+        console.error('Erreur init EmailJS:', err);
+        alert('Erreur init EmailJS : ' + (err.message || JSON.stringify(err)));
+    }
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            console.log('Submit detecte');
+
+            const form = this;
+            const btn = form.querySelector('button[type="submit"]');
+
+            if (!btn) {
+                console.error('Bouton submit introuvable');
+                alert('Bouton submit introuvable');
+                return;
+            }
+
+            const originalText = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = 'Envoi en cours...';
+
+            const data = new FormData(form);
+            for (const [key, value] of data.entries()) {
+                console.log('Champ formulaire ->', key, ':', value);
+            }
+
+            emailjs.sendForm(
+                'service_h564orp',
+                'template_6j02vj7',
+                form
+            )
+            .then(function (response) {
+                console.log('Succes EmailJS:', response);
+                alert('Message envoye avec succes');
+                form.reset();
+            })
+            .catch(function (error) {
+                console.error('Erreur EmailJS complete:', error);
+                alert('Erreur EmailJS : ' + (error?.text || error?.message || JSON.stringify(error)));
+            })
+            .finally(function () {
+                btn.disabled = false;
+                btn.textContent = originalText;
             });
-        }
-    </script>
+        });
+    } else {
+        console.error('Formulaire .contact-form introuvable');
+        alert('Formulaire introuvable dans la page');
+    }
+});
+</script>
+
 </body>
 </html>
 
