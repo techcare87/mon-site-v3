@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dépannage Informatique & Mobile</title>
+    <link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)">
+    <link rel="preconnect" href="[fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+    <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap)" rel="stylesheet">
+    <script src="[cdn.jsdelivr.net](https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js)"></script>
+
+    <style>
+        :root {
+            --beige-light: #F5F1EB;
+            --beige: #E8E0D5;
+            --beige-dark: #D4C9BB;
+            --brown-light: #A68B6A;
+            --brown: #8B7355;
+            --brown-dark: #5C4A32;
+            --green-light: #A8B5A0;
+            --green: #6B7F5E;
+            --green-dark: #4A5A40;
+            --white: #FDFCFA;
+            --text: #3D3426;
+            --text-light: #6B5D4D;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--beige-light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            padding: 1rem 2rem;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(92, 74, 50, 0.08);
+        }
+
+        section {
+            scroll-margin-top: 80px;
+            padding: 5rem 2rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--brown-dark);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--green);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--green);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--green-dark);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--brown-dark);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--beige-light) 0%, var(--beige) 100%);
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 70%;
+            height: 150%;
+            background: radial-gradient(ellipse, var(--green-light) 0%, transparent 70%);
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--brown-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--green);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--brown) 0%, var(--brown-dark) 100%);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(92, 74, 50, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(92, 74, 50, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--brown-dark);
+            border: 2px solid var(--brown);
+        }
+
+        .btn-secondary:hover {
+            background: var(--brown);
+            color: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--brown-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Services Grid */
+        .services-section {
+            background: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--beige-light);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(92, 74, 50, 0.15);
+        }
+
+        .service-header {
+            background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .service-header.brown {
+            background: linear-gradient(135deg, var(--brown) 0%, var(--brown-dark) 100%);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+        }
+
+        .service-header h3 {
+            color: var(--white);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .service-body {
+            padding: 1.5rem;
+        }
+
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .price-table tr {
+            border-bottom: 1px solid var(--beige-dark);
+        }
+
+        .price-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .price-table td {
+            padding: 0.85rem 0;
+            vertical-align: top;
+        }
+
+        .price-table td:first-child {
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
+        .price-table td:last-child {
+            text-align: right;
+            font-weight: 600;
+            color: var(--green-dark);
+            white-space: nowrap;
+        }
+
+        .price-free {
+            color: var(--green) !important;
+        }
+
+        /* Packs Section */
+        .packs-section {
+            background: linear-gradient(180deg, var(--beige) 0%, var(--beige-light) 100%);
+        }
+
+        .packs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .pack-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .pack-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(92, 74, 50, 0.15);
+        }
+
+        .pack-card.featured {
+            border-color: var(--green);
+        }
+
+        .pack-card.featured::before {
+            content: 'Populaire';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--green);
+            color: var(--white);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pack-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .pack-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--brown-dark);
+            margin-bottom: 1rem;
+        }
+
+        .pack-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .pack-features li {
+            padding: 0.5rem 0;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .pack-features li::before {
+            content: '✓';
+            color: var(--green);
+            font-weight: bold;
+        }
+
+        .pack-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--green-dark);
+        }
+
+        .pack-price span {
+            font-size: 1rem;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        /* Déplacement Section */
+        .deplacement-section {
+            background: var(--white);
+        }
+
+        .deplacement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .deplacement-card {
+            background: var(--beige-light);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .deplacement-card:hover {
+            transform: scale(1.03);
+        }
+
+        .deplacement-card .distance {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .deplacement-card .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--green-dark);
+        }
+
+        /* Offre Section */
+        .offre-section {
+            background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .offre-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .offre-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .offre-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .offre-badge {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .offre-badge .discount {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .offre-badge .label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--beige-light);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--brown-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--green-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(92, 74, 50, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--beige-dark);
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            background: var(--beige-light);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--green);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Legal Section */
+        .legal-section {
+            background: var(--beige);
+            border-top: 1px solid var(--beige-dark);
+        }
+
+        .legal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .legal-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(92, 74, 50, 0.08);
+        }
+
+        .legal-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--brown-dark);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .legal-card .legal-item {
+            margin-bottom: 1rem;
+        }
+
+        .legal-card .legal-item label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.3rem;
+            font-weight: 500;
+        }
+
+        .legal-card .legal-item .value {
+            color: var(--text);
+            font-size: 0.95rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed var(--beige-dark);
+        }
+
+        .legal-card .legal-item .value.placeholder {
+            color: var(--brown-light);
+            font-style: italic;
+        }
+
+        .legal-note {
+            background: var(--beige-light);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            border-left: 3px solid var(--green);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--brown-dark);
+            color: var(--beige-light);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer .logo {
+            color: var(--beige-light);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--beige-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 0;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                padding: 1rem;
+                border-bottom: 1px solid var(--beige);
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .legal-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#top" class="logo">Tech<span>Care</span></a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#packs">Packs</a></li>
+                <li><a href="#deplacement">Déplacement</a></li>
+                <li><a href="#offre">Offres</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#legal">Mentions légales</a></li>
+            </ul>
+
+            <div class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" role="button" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="top">
+        <div class="hero-content">
+            <div class="badge">🎁 Offre de lancement – Diagnostic gratuit</div>
+            <h1>Votre expert <span>informatique</span> de proximité</h1>
+            <p>Dépannage PC, smartphones et optimisation. Un service rapide, transparent et à domicile.</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Demander un devis</a>
+                <a href="#services" class="btn btn-secondary">Voir les tarifs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nos Services</h2>
+                <p>Des solutions adaptées à tous vos besoins informatiques et mobiles</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Informatique -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <span class="service-icon">💻</span>
+                        <h3>Informatique</h3>
+                    </div>
+                    <div class="service-body">
+                        <table class="price-table">
+                            <tr>
+                                <td>Diagnostic simple</td>
+                                <td class="price-free">Gratuit</td>
+                            </tr>
+                            <tr>
+                                <td>Diagnostic approfondi (>30 min)</td>
+                                <td>15 €</td>
+                            </tr>
+                            <tr>
+                                <td>Nettoyage logiciel complet</td>
+                                <td>25 €</td>
+                            </tr>
+                            <tr>
+                                <td>Réinstallation Windows</td>
+                                <td>45 €</td>
+                            </tr>
+                            <tr>
+                                <td>Réinstallation + sauvegarde</td>
+                                <td>60 €</td>
+                            </tr>
+                            <tr>
+                                <td>Installation SSD (fourni)</td>
+                                <td>30 €</td>
+                            </tr>
+                            <tr>
+                                <td>Installation RAM (fournie)</td>
+                                <td>20 €</td>
+                            </tr>
+                            <tr>
+                                <td>Nettoyage physique PC portable</td>
+                                <td>25 €</td>
+                            </tr>
+                            <tr>
+                                <td>Nettoyage physique PC fixe</td>
+                                <td>30 €</td>
+                            </tr>
+                            <tr>
+                                <td>Changement pâte thermique</td>
+                                <td>25 €</td>
+                            </tr>
+                            <tr>
+                                <td>Optimisation gaming</td>
+                                <td>30 €</td>
+                            </tr>
+                            <tr>
+                                <td>Suppression malware/virus</td>
+                                <td>30 €</td>
+                            </tr>
+                            <tr>
+                                <td>Sauvegarde de données</td>
+                                <td>20 €</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Téléphones -->
+                <div class="service-card">
+                    <div class="service-header brown">
+                        <span class="service-icon">📱</span>
+                        <h3>Téléphones</h3>
+                    </div>
+                    <div class="service-body">
+                        <table class="price-table">
+                            <tr>
+                                <td>Diagnostic</td>
+                                <td class="price-free">Gratuit</td>
+                            </tr>
+                            <tr>
+                                <td>Réinitialisation complète</td>
+                                <td>25 €</td>
+                            </tr>
+                            <tr>
+                                <td>Sauvegarde/transfert données</td>
+                                <td>25 €</td>
+                            </tr>
+                            <tr>
+                                <td>Nettoyage stockage</td>
+                                <td>20 €</td>
+                            </tr>
+                            <tr>
+                                <td>Configuration téléphone neuf</td>
+                                <td>20 €</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packs Section -->
+    <section class="packs-section" id="packs">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nos Packs</h2>
+                <p>Économisez avec nos formules complètes</p>
+            </div>
+
+            <div class="packs-grid">
+                <div class="pack-card">
+                    <div class="pack-icon">🚀</div>
+                    <h3>Pack "PC Lent"</h3>
+                    <ul class="pack-features">
+                        <li>Diagnostic complet</li>
+                        <li>Nettoyage logiciel</li>
+                        <li>Optimisation système</li>
+                    </ul>
+                    <div class="pack-price">40 € <span>au lieu de 55 €</span></div>
+                </div>
+
+                <div class="pack-card featured">
+                    <div class="pack-icon">✨</div>
+                    <h3>Pack "Remise à neuf"</h3>
+                    <ul class="pack-features">
+                        <li>Sauvegarde complète</li>
+                        <li>Réinstallation Windows</li>
+                        <li>Optimisation finale</li>
+                    </ul>
+                    <div class="pack-price">70 € <span>au lieu de 95 €</span></div>
+                </div>
+
+                <div class="pack-card">
+                    <div class="pack-icon">🎮</div>
+                    <h3>Pack "Gaming"</h3>
+                    <ul class="pack-features">
+                        <li>Nettoyage complet</li>
+                        <li>Optimisation performances</li>
+                        <li>Vérification températures</li>
+                    </ul>
+                    <div class="pack-price">50 € <span>au lieu de 65 €</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Déplacement Section -->
+    <section class="deplacement-section" id="deplacement">
+        <div class="container">
+            <div class="section-header">
+                <h2>🚗 Frais de déplacement</h2>
+                <p>Intervention à domicile dans toute la région</p>
+            </div>
+
+            <div class="deplacement-grid">
+                <div class="deplacement-card">
+                    <div class="distance">Moins de 10 km</div>
+                    <div class="price" style="color: var(--green);">Gratuit</div>
+                </div>
+                <div class="deplacement-card">
+                    <div class="distance">10 à 20 km</div>
+                    <div class="price">+ 5 €</div>
+                </div>
+                <div class="deplacement-card">
+                    <div class="distance">Plus de 20 km</div>
+                    <div class="price">+ 10 €</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offre Section -->
+    <section class="offre-section" id="offre">
+        <div class="container">
+            <h2>🎁 Offre de lancement</h2>
+            <p>Profitez de nos offres spéciales pendant les 3 premiers mois !</p>
+            <div class="offre-badges">
+                <div class="offre-badge">
+                    <span class="discount">-20%</span>
+                    <span class="label">pour les étudiants</span>
+                </div>
+                <div class="offre-badge">
+                    <span class="discount">0 €</span>
+                    <span class="label">Diagnostic gratuit</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contactez-moi</h2>
+                <p>Une question ? Besoin d'un devis ? Je vous réponds rapidement.</p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Parlons de votre problème</h3>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <strong>Téléphone</strong><br>
+                            +33 7 81 38 96 50
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <strong>Email</strong><br>
+                            techcare87pro@gmail.com
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <strong>Zone d'intervention</strong><br>
+                            Limoges et alentours
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">⏰</div>
+                        <div>
+                            <strong>Disponibilité</strong><br>
+                            Lun - Sam : 9h - 19h
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Téléphone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service">Service souhaité</label>
+                        <select id="service" name="service">
+                            <option value="">Sélectionnez un service</option>
+                            <option value="diagnostic">Diagnostic</option>
+                            <option value="nettoyage">Nettoyage logiciel</option>
+                            <option value="reinstall">Réinstallation Windows</option>
+                            <option value="pack-pc">Pack PC Lent</option>
+                            <option value="pack-neuf">Pack Remise à neuf</option>
+                            <option value="pack-gaming">Pack Gaming</option>
+                            <option value="telephone">Service téléphone</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Décrivez votre problème</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.9rem; line-height: 1.3;">
+                            <input type="checkbox" name="consent" required style="margin-top: 3px;">
+                            <span>
+                                J’accepte que mes données personnelles soient utilisées pour être recontacté dans le cadre de ma demande de dépannage (RGPD).
+                            </span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        Envoyer ma demande
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legal Section -->
+    <section class="legal-section" id="legal">
+        <div class="container">
+            <div class="section-header">
+                <h2>📋 Informations légales</h2>
+                <p>Transparence et conformité RGPD</p>
+            </div>
+
+            <div class="legal-grid">
+                <!-- Mentions légales -->
+                <div class="legal-card">
+                    <h3>📋 Mentions légales</h3>
+
+                    <div class="legal-item">
+                        <label>Nom et prénom</label>
+                        <div class="value placeholder">À compléter</div>
+                    </div>
+
+                    <div class="legal-item">
+                        <label>Nom commercial</label>
+                        <div class="value placeholder">À compléter (ex: GJ Tech)</div>
+                    </div>
+
+                    <div class="legal-item">
+                        <label>Statut juridique</label>
+                        <div class="value placeholder">Micro-entrepreneur / Entrepreneur individuel</div>
+                    </div>
+
+                    <div class="legal-item">
+                        <label>Numéro SIRET</label>
+                        <div class="value placeholder">XXX XXX XXX XXXXX</div>
+                    </div>
+
+                    <div class="legal-item">
+                        <label>Adresse de l'entreprise</label>
+                        <div class="value placeholder">À compléter</div>
+                    </div>
+
+                    <div class="legal-item">
+                        <label>Email de contact</label>
+                        <div class="value placeholder">contact@votresite.fr</div>
+                    </div>
+
+                    <div class="legal-item">
+                        <label>Téléphone</label>
+                        <div class="value placeholder">06 XX XX XX XX</div>
+                    </div>
+
+                    <div class="legal-note">
+                        ⚠️ Ces informations sont obligatoires dès l'obtention de votre numéro SIRET.
+                    </div>
+                </div>
+
+                <!-- Hébergeur -->
+                <div class="legal-card">
+                    <h3>🌐 Hébergeur du site</h3>
+
+                    <div class="legal-item">
+                        <label>Nom de l'hébergeur</label>
+                        <div class="value placeholder">À compléter (ex: OVHcloud, Hostinger, Vercel...)</div>
+                    </div>
+
+                    <div class="legal-item">
+                        <label>Raison sociale</label>
+                        <div class="value placeholder">À compléter</div>
+                    </div>
+
+                    <div class="legal-item">
+                        <label>Adresse de l'hébergeur</label>
+                        <div class="value placeholder">À compléter</div>
+                    </div>
+
+                    <div class="legal-note">
+                        💡 <strong>Exemples courants :</strong><br>
+                        OVHcloud – 2 rue Kellermann, 59100 Roubaix<br>
+                        Hostinger – Kaunas, Lituanie<br>
+                        Vercel Inc. – San Francisco, CA, USA<br>
+                        GitHub Pages – GitHub Inc., San Francisco, CA
+                    </div>
+                </div>
+
+                <!-- Politique de confidentialité -->
+                <div class="legal-card">
+                    <h3>🔒 Politique de confidentialité</h3>
+
+                    <div class="legal-item">
+                        <label>Données collectées</label>
+                        <div class="value">Nom, email, téléphone, message (via formulaire de contact)</div>
+                    </div>
+
+                    <div class="legal-item">
+                        <label>Finalité de la collecte</label>
+                        <div class="value">Répondre aux demandes de devis et de contact</div>
+                    </div>
+
+                    <div class="legal-item">
+                        <label>Durée de conservation</label>
+                        <div class="value placeholder"> 3 ans après le dernier contact)</div>
+                    </div>
+
+                    <div class="legal-item">
+                        <label>Droit d'accès et suppression</label>
+                        <div class="value">Contactez-nous par email pour exercer vos droits RGPD</div>
+                    </div>
+                    <div class="legal-note">
+                        📧 Pour toute demande concernant vos données personnelles (accès, rectification, suppression), envoyez un email à l'adresse de contact indiquée ci-dessus.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <a href="#top" class="logo">Tech<span>Care</span></a>
+        <p>© 2024 TechCare – Dépannage informatique à domicile. Tous droits réservés.</p>
+        <div class="footer-links">
+            <a href="#legal">Mentions légales</a>
+            <a href="#legal">Politique de confidentialité</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const contactForm = document.querySelector('.contact-form');
+
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+
+            menuToggle.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    navLinks.classList.toggle('active');
+                }
+            });
+        }
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+
+                if (!href || href === '#') {
+                    return;
+                }
+
+                const target = document.querySelector(href);
+
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        emailjs.init("k8yFMxpOYt1hrKnmM");
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const form = this;
+                const btn = form.querySelector('button[type="submit"]');
+                const originalText = btn.textContent;
+
+                btn.textContent = 'Envoi en cours...';
+                btn.disabled = true;
+
+                emailjs.sendForm(
+                    'service_h564orp',
+                    'template_6j02vj7',
+                    form
+                )
+                .then(function () {
+                    alert('✅ Message envoyé avec succès !\n\nJe vous recontacte très vite.');
+                    form.reset();
+                })
+                .catch(function (error) {
+                    console.error(error);
+                    alert("Erreur lors de l'envoi du message.");
+                })
+                .finally(function () {
+                    btn.disabled = false;
+                    btn.textContent = originalText;
+                });
+            });
+        }
+    </script>
+</body>
+</html>
+
